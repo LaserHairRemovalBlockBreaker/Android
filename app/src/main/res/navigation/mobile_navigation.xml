@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation.xml"
+    app:startDestination="@+id/navigation_title">
+
+    <fragment
+        android:id="@+id/navigation_game"
+        android:name="com.example.laserhairremoval.ui.view.GameFragment"
+        android:label="Game"
+        tools:layout="@layout/fragment_game"/>
+
+    <fragment
+        android:id="@+id/navigation_game_clear"
+        android:name="com.example.laserhairremoval.ui.view.GameClearFragment"
+        android:label="GameClear"
+        tools:layout="@layout/fragment_game_clear"/>
+
+    <fragment
+        android:id="@+id/navigation_game_over"
+        android:name="com.example.laserhairremoval.ui.view.GameOverFragment"
+        android:label="GameOver"
+        tools:layout="@layout/fragment_game_over"/>
+
+    <fragment
+        android:id="@+id/navigation_title"
+        android:name="com.example.laserhairremoval.ui.view.TitleFragment"
+        android:label="Title"
+        tools:layout="@layout/fragment_title"/>
+
+</navigation>
