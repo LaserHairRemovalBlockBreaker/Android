@@ -5,14 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import androidx.fragment.app.Fragment
+import androidx.fragment.app.DialogFragment
 import androidx.navigation.fragment.findNavController
 import com.example.laserhairremoval.R
-import com.example.laserhairremoval.databinding.FragmentGameBinding
-import com.example.laserhairremoval.databinding.FragmentGameClearBinding
+import com.example.laserhairremoval.databinding.FragmentGamePauseDialogBinding
 
-class GameClearFragment: Fragment() {
-    private var _binding: FragmentGameClearBinding? = null
+class GamePauseDialogFragment: DialogFragment() {
+    private var _binding: FragmentGamePauseDialogBinding? = null
 
     private val binding get() = _binding!!
 
@@ -21,14 +20,24 @@ class GameClearFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentGameClearBinding.inflate(inflater, container, false)
+        _binding = FragmentGamePauseDialogBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         // viewの取得
+        val btResume: ImageView = binding.btResume
         val btRestart: ImageView = binding.btRestart
+        val btHome: ImageView = binding.btHome
 
+        btResume.setOnClickListener {
+            dialog?.dismiss()
+        }
         btRestart.setOnClickListener {
             findNavController().navigate(R.id.navigation_game)
+            dialog?.dismiss()
+        }
+        btHome.setOnClickListener {
+            findNavController().navigate(R.id.navigation_title)
+            dialog?.dismiss()
         }
 
         return root
