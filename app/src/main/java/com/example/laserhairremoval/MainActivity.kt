@@ -1,7 +1,10 @@
 package com.example.laserhairremoval
 
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.WindowInsets
+import android.view.WindowInsetsController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -26,5 +29,18 @@ class MainActivity : AppCompatActivity() {
             ),
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
+
+        // フルスクリーンにするために、TitleBarなどを隠す
+        hideSystemUI()
+    }
+
+    private fun hideSystemUI() {
+        supportActionBar?.hide()
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            window.decorView.windowInsetsController?.hide(
+                WindowInsets.Type.statusBars() or WindowInsets.Type.navigationBars()
+            )
+            window.decorView.windowInsetsController?.systemBarsBehavior = WindowInsetsController.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+        }
     }
 }
